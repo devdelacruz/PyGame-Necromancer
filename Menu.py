@@ -191,8 +191,8 @@ class LeaderboardsMenu(Menu):
             self.game.display.fill(self.game.BLUE)
             self.game.draw_text('TOP 10 LEADERBOARDS', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
             self.game.draw_text('Developers:', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30)
-            self.game.draw_text('Kyle', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
-            self.game.draw_text('Jemaica', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 70)
+            self.game.draw_text('Dela Cruz', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
+            self.game.draw_text('Mon', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 70)
             self.game.draw_text(" BACKSPACE or ENTER to go back.", 20, 1110, 705)
             self.blit_screen()
 
