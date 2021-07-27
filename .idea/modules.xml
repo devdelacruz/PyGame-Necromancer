@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../CSElective4/.idea/CSElective4.iml" filepath="$PROJECT_DIR$/../CSElective4/.idea/CSElective4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../CSElective5/.idea/CSElective5.iml" filepath="$PROJECT_DIR$/../CSElective5/.idea/CSElective5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../CSElective5Lessons/.idea/CSElective5Lessons.iml" filepath="$PROJECT_DIR$/../CSElective5Lessons/.idea/CSElective5Lessons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PyGameSample.iml" filepath="$PROJECT_DIR$/.idea/PyGameSample.iml" />
+    </modules>
+  </component>
+</project>
