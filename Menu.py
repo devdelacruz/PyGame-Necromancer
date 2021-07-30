@@ -168,6 +168,14 @@ class OptionsMenu(Menu):
             self.game.draw_text(" Use SPACE to jump.", 20, 625, 400)
             self.game.draw_text(" Use LEFT SHIFT to dash.", 20, 625, 440)
             self.game.draw_text(" Use J to attack.", 20, 625, 480)
+            self.game.draw_text(" System Debug Controls:", 20, 250, 360)
+            self.game.draw_text(" Use P to Toggle GodMode", 20, 250, 390)
+            self.game.draw_text(" Use O to Un-Toggle GodMode", 20, 250, 410)
+            self.game.draw_text(" Use M to Turn Music On/Off GodMode", 20, 250, 430)
+            self.game.draw_text(" Graphics Debug Controls:", 20, 1000, 360)
+            self.game.draw_text(" Hold G to show Playable Grid", 20, 1000, 390)
+            self.game.draw_text(" Hold H to show Hitboxes", 20, 1000, 410)
+            self.game.draw_text(" Hold V to show Tile Maps", 20, 1000, 430)
             self.game.draw_text(" BACKSPACE or ENTER to go back.", 20, 1110, 705)
             self.blit_screen()
 
@@ -209,9 +217,9 @@ class CreditsMenu(Menu):
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
             self.game.display.fill(self.game.BLUE)
-            self.game.draw_text('Credits: TEAM SCIPY', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
+            self.game.draw_text('NECROMANCER', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
             self.game.draw_text('Developers:', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30)
-            self.game.draw_text('Kyle', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
-            self.game.draw_text('Jemaica', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 70)
+            self.game.draw_text('Dela Cruz, Prince Kyle', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
+            self.game.draw_text('Mon, Jemaica', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 70)
             self.game.draw_text(" BACKSPACE or ENTER to go back.", 20, 1110, 705)
             self.blit_screen()

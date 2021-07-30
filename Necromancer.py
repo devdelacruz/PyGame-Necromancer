@@ -3,6 +3,7 @@ import pygame
 from numpy import random
 import sys
 import csv
+import threading
 from datetime import datetime
 from drawPlayground import drawPg
 from drawTile import drawTl
@@ -20,6 +21,7 @@ pygame.init()
 clock = pygame.time.Clock()
 now = datetime.now()
 sfx = True
+
 
 def Start():
     # display game window
@@ -356,7 +358,50 @@ def Start():
     wall4 = pygame.image.load('assets/Pixel/Sprites/BG/Floor/Wall/Wall4.png')
     wall5 = pygame.image.load('assets/Pixel/Sprites/BG/Floor/Wall/Wall5.png')
     wall6 = pygame.image.load('assets/Pixel/Sprites/BG/Floor/Wall/Wall6.png')
-    headCthulu = pygame.image.load('assets/Pixel/Sprites/BG/Floor/Head.png')
+
+    # headCthulu = pygame.image.load('assets/Pixel/Sprites/BG/Floor/Head.png')
+
+    def ThreadSprites():
+        th1 = threading.Thread(target=torchBG.draw)
+        th2 = threading.Thread(target=Cthulu.draw)
+        th1.start()
+        th2.start()
+
+    def ThreadEnemy():
+        th3 = threading.Thread(target=enemyFollow)
+        th3.start()
+
+    def ThreadPlayer():
+        th4 = threading.Thread(target=necromancer.draw)
+        th4.start()
+
+    def floorDraw():
+        win.blit(floor_BGEnd, (50, 400))
+        win.blit(floor_BGMid, (200, 400))
+        win.blit(floor_BGMid, (300, 400))
+        win.blit(floor_BGMid, (400, 400))
+        win.blit(floor_BGMid, (500, 400))
+        win.blit(floor_BGMid, (600, 400))
+        win.blit(floor_BGMid, (700, 400))
+        win.blit(floor_BGMid, (800, 400))
+        win.blit(floor_BGEnd2, (1050, 400))
+        win.blit(floor_BGMid, (900, 400))
+        win.blit(wall1, (50, 280))
+        win.blit(wall2, (250, 280))
+        win.blit(wall3, (450, 280))
+        win.blit(wall4, (650, 280))
+        win.blit(wall5, (850, 280))
+        win.blit(wall6, (1050, 280))
+
+    def floorCorpse():
+        win.blit(floor_Man1, (100, 400))
+        win.blit(floor_Man2, (50, 400))
+        win.blit(floor_Man3, (1050, 400))
+        win.blit(floor_Man4, (1000, 400))
+        win.blit(floor_Man5, (900, 400))
+        win.blit(floor_Man6, (170, 400))
+        win.blit(floor_Man7, (850, 400))
+        # win.blit(Head, (550, 100))
 
     class torch:
         def __init__(self, torch_x, torch_y):
@@ -365,7 +410,7 @@ def Start():
             self.torchCount = 0
             self.torch1 = True
 
-        def draw(self, win):
+        def draw(self):
             if self.torchCount + 1 >= 30:
                 self.torchCount = 0
 
@@ -390,7 +435,7 @@ def Start():
             self.headCount = 0
             self.isHead = True
 
-        def draw(self, win):
+        def draw(self):
             if self.headCount + 1 >= 30:
                 self.headCount = 0
 
@@ -414,10 +459,10 @@ def Start():
 
         def drawMusic(self):
             if self.IsPaused:
-                SFX = Pixel.render("Music: ON", True, (252, 252, 252))
+                SFX = Pixel.render("Music: OFF", True, (252, 252, 252))
                 win.blit(SFX, (10, 690))
             else:
-                SFX = Pixel.render("Music: OFF", True, (252, 252, 252))
+                SFX = Pixel.render("Music: On", True, (252, 252, 252))
                 win.blit(SFX, (10, 690))
 
     class levelIn:
@@ -436,7 +481,7 @@ def Start():
             self.gameOverCount = 0
             self.date = now
 
-        def draw(self, win):
+        def draw(self):
 
             if self.gameOverCount + 1 >= 30:
                 self.gameOverCount = 0
@@ -445,13 +490,13 @@ def Start():
                 win.blit(enemy_death[self.gameOverCount // 3], (self.x, self.y))
 
             self.gameOverCount += 1
+
     # Fonts
     # celticRune = pygame.font.Font("assets/Fonts/CelticRune.ttf", 25)
     # ancientRune = pygame.font.Font("assets/Fonts/AncientRunes.ttf", 25)
     Pixel = pygame.font.Font("assets/Fonts/Pixel.ttf", 25)
     Pixel2 = pygame.font.Font("assets/Fonts/Pixel.ttf", 50)
     Pixel3 = pygame.font.Font("assets/Fonts/Pixel.ttf", 100)
-
 
     # character attributes
     class player:
@@ -514,7 +559,10 @@ def Start():
             self.jumpDashCount = 0
             self.hurtCount = 0
 
-        def draw(self, win):
+            # Debugs
+            self.godMode = False
+
+        def draw(self):
 
             # Attack counter loop limit
             if self.attackCount + 1 >= 30:
@@ -607,6 +655,12 @@ def Start():
             self.runDashCount += 1
             self.jumpDashCount += 1
             self.hurtCount += 1
+
+        def godModeToggle(self):
+
+            if self.godMode:
+                GodMode = Pixel.render("God Mode On", True, (107, 238, 77))
+                win.blit(GodMode, (self.player_x + 25, self.player_y - 10))
 
     def damageHandler():
         # Player touch damage
@@ -726,7 +780,7 @@ def Start():
             self.hurtCount = 0
             self.dyingCount = 0
 
-        def draw(self, win):
+        def draw(self):
 
             if self.idleCount + 1 >= 30:
                 self.idleCount = 0
@@ -882,7 +936,7 @@ def Start():
     def spawnEnemy():
         x = random.randint(0, 1200)
         crusader.enemy_x = x
-        crusader.draw(win)
+        crusader.draw()
         crusader.health = 100
         crusader.health += 50
         crusader.enemy_v += 1
@@ -892,7 +946,7 @@ def Start():
 
     def nextLevel():
         if not crusader.isDead:
-            crusader.draw(win)
+            crusader.draw()
         elif crusader.isDead:
             necromancer.levelCounter += 1
             spawnEnemy()
@@ -1020,7 +1074,7 @@ def Start():
             s.set_alpha(150)
             win.blit(s, (0, 0))
 
-            gO.draw(win)
+            gO.draw()
 
             drawText = Pixel2.render('Game Over', True, (255, 255, 255))
             win.blit(drawText, ((1280 / 2) - (drawText.get_width() / 2), 50))
@@ -1077,52 +1131,23 @@ def Start():
             pygame.display.update()
             clock.tick(30)
 
-    def floorDraw():
-        win.blit(floor_BGEnd, (50, 400))
-        win.blit(floor_BGMid, (200, 400))
-        win.blit(floor_BGMid, (300, 400))
-        win.blit(floor_BGMid, (400, 400))
-        win.blit(floor_BGMid, (500, 400))
-        win.blit(floor_BGMid, (600, 400))
-        win.blit(floor_BGMid, (700, 400))
-        win.blit(floor_BGMid, (800, 400))
-        win.blit(floor_BGEnd2, (1050, 400))
-        win.blit(floor_BGMid, (900, 400))
-        win.blit(wall1, (50, 280))
-        win.blit(wall2, (250, 280))
-        win.blit(wall3, (450, 280))
-        win.blit(wall4, (650, 280))
-        win.blit(wall5, (850, 280))
-        win.blit(wall6, (1050, 280))
-
-    def floorCorpse():
-        win.blit(floor_Man1, (100, 400))
-        win.blit(floor_Man2, (50, 400))
-        win.blit(floor_Man3, (1050, 400))
-        win.blit(floor_Man4, (1000, 400))
-        win.blit(floor_Man5, (900, 400))
-        win.blit(floor_Man6, (170, 400))
-        win.blit(floor_Man7, (850, 400))
-        # win.blit(Head, (550, 100))
-
     def redrawGameWindow():
         win.fill((26, 33, 41))
+        ThreadSprites()
         floorCorpse()
-        torchBG.draw(win)
-        Cthulu.draw(win)
         floorDraw()
         nextLevel()
-        necromancer.draw(win)
+        # necromancer.draw()
+        ThreadPlayer()
         musicPause.drawMusic()
         playerHealth()
         playerStamina()
         playerDamageHealth()
         enemyDamageHealth()
-
         pointsHandler()
         levelIndicator()
-
         debugKeys()
+        necromancer.godModeToggle()
         pygame.display.update()
 
     # Main Loop
@@ -1393,6 +1418,18 @@ def Start():
             toggleTiles = True
         else:
             toggleTiles = False
+        if keys[pygame.K_p]:
+            necromancer.health = 9999
+            necromancer.maxHealth = 9999
+            necromancer.stamina = 9999
+            necromancer.maxStamina = 9999
+            necromancer.godMode = True
+        if keys[pygame.K_o]:
+            necromancer.health = 100
+            necromancer.maxHealth = 100
+            necromancer.stamina = 100
+            necromancer.maxStamina = 100
+            necromancer.godMode = False
 
         # Damage Cooldown
         if necromancer.damageImmune:
@@ -1406,7 +1443,7 @@ def Start():
             damageHandler()
 
         # Enemy Handlers
-        enemyFollow()
+        ThreadEnemy()
         redrawGameWindow()
 
     pygame.quit()
