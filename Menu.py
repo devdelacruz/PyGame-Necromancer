@@ -255,6 +255,6 @@ class CreditsMenu(Menu):
             self.game.draw_text('NECROMANCER', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
             self.game.draw_text('Developers:', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30)
             self.game.draw_text('Dela Cruz, Prince Kyle', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
-            self.game.draw_text('Mon, Jemaica', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 70)
+            self.game.draw_text('Mon, Jemaica Mae', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 70)
             self.game.draw_text(" BACKSPACE or ENTER to go back.", 20, 1110, 705)
             self.blit_screen()
