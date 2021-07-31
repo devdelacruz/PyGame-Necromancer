@@ -58,5 +58,55 @@
 # if __name__ == "__main__":
 #     runthreads()
 
-for i in range(10000000000):
-    print(i)
+# from csv import DictReader
+# # open file in read mode
+#
+# list = []
+#
+# with open('gamelogs.csv', 'r') as read_obj:
+#     # pass the file object to DictReader() to get the DictReader object
+#     csv_dict_reader = DictReader(read_obj)
+#     # iterate over each line as a ordered dictionary
+#     for row in csv_dict_reader:
+#         # row variable is a dictionary that represents a row in csv
+#         print(row)
+
+# import csv
+
+# my_dict = {"Name":[],"Points":[],"Levels Cleared":[]};
+
+# thisdict = {
+#   "Name": "1",
+#   "Points": "1",
+# }
+# thisdict.update({"color": "red"})
+
+# Bubble Sort
+import csv
+
+List = []
+
+with open("gamelogs.csv", "r") as csv_file:
+    csv_reader = csv.DictReader(csv_file, delimiter=',')
+    for lines in csv_reader:
+            x = lines['Name']
+            y = lines['Points']
+            List.append(y + '        ' + x)
+
+# print("=======================")
+# print(List)
+
+for i in range(0, len(List) - 1):
+    for j in range(len(List) - 1):
+        if (List[j] > List[j + 1]):
+            List[j], List[j + 1] = List[j + 1], List[j]
+
+# print("=======================")
+List.reverse()
+# print(List)
+#
+# print("=======================")
+
+
+for y in range(5):
+    print(List[y])

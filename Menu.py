@@ -1,5 +1,6 @@
 import pygame
 import sys
+import csv
 
 intro_BG = [pygame.image.load('assets/Pixel/Sprites/Necromancer/Intro/v1/Necromancer Intro 00.png'),
             pygame.image.load('assets/Pixel/Sprites/Necromancer/Intro/v1/Necromancer Intro 01.png'),
@@ -101,6 +102,7 @@ class MainMenu(Menu):
             self.game.draw_text("Controls", 20, self.optionsx, self.optionsy + 20)
             self.game.draw_text("Leaderboards", 20, self.leaderx, self.leadery + 20)
             self.game.draw_text("Credits", 20, self.creditsx, self.creditsy + 20)
+            self.game.draw_text("v0.2.1", 20, 35, 705)
             self.game.draw_text("ESC to exit", 20, 1220, 705)
             self.draw_cursor()
             self.blit_screen()
@@ -188,8 +190,35 @@ class OptionsMenu(Menu):
 class LeaderboardsMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
+        self.List = []
+        self.appendY = 0
+        self.top1 = " "
+        self.top2 = " "
+        self.top3 = " "
+        self.top4 = " "
+        self.top5 = " "
+
+        with open("gamelogs.csv", "r") as csv_file:
+            csv_reader = csv.DictReader(csv_file, delimiter=',')
+            for lines in csv_reader:
+                x = lines['Name']
+                y = lines['Points']
+                self.List.append(y + '        ' + x)
+
+        for i in range(0, len(self.List) - 1):
+            for j in range(len(self.List) - 1):
+                if self.List[j] > self.List[j + 1]:
+                    self.List[j], self.List[j + 1] = self.List[j + 1], self.List[j]
+
+        self.List.reverse()
+        self.top1 = self.List[1]
+        self.top2 = self.List[2]
+        self.top3 = self.List[3]
+        self.top4 = self.List[4]
+        self.top5 = self.List[5]
 
     def display_menu(self):
+
         self.run_display = True
         while self.run_display:
             self.game.check_events()
@@ -197,10 +226,16 @@ class LeaderboardsMenu(Menu):
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
             self.game.display.fill(self.game.BLUE)
-            self.game.draw_text('TOP 10 LEADERBOARDS', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
-            self.game.draw_text('Developers:', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30)
-            self.game.draw_text('Dela Cruz', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
-            self.game.draw_text('Mon', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 70)
+            self.game.draw_text('TOP 5 LEADERBOARDS', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
+
+            # for y in range(5): print(self.List[y]) self.top = self.List[y] self.game.draw_text(self.top, 20,
+            # self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30 + self.appendY) self.appendY += 20
+
+            self.game.draw_text(self.top1, 20, self.game.DISPLAY_W / 2, 380)
+            self.game.draw_text(self.top2, 20, self.game.DISPLAY_W / 2, 400)
+            self.game.draw_text(self.top3, 20, self.game.DISPLAY_W / 2, 420)
+            self.game.draw_text(self.top4, 20, self.game.DISPLAY_W / 2, 440)
+            self.game.draw_text(self.top5, 20, self.game.DISPLAY_W / 2, 460)
             self.game.draw_text(" BACKSPACE or ENTER to go back.", 20, 1110, 705)
             self.blit_screen()
 

@@ -28,7 +28,7 @@ def Start():
     canvas_w, canvas_h = 1280, 720
     win = pygame.display.set_mode((1280, 720))  # Resolution
     pygame.display.set_caption("Necromancer")  # Name of window
-    gameVersion = "v0.1.8"
+    gameVersion = "v0.2.1"
 
     # Sprite imports
     player_wRight = [pygame.image.load('assets/Pixel/Sprites/Necromancer/Walk/Right/Necromancer Walk Right 0.png'),
@@ -299,16 +299,39 @@ def Start():
                    pygame.image.load('assets/Pixel/Sprites/Templar/Templar Attack/Left/Templar Attack Left 1.png'),
                    pygame.image.load('assets/Pixel/Sprites/Templar/Templar Attack/Left/Templar Attack Left 1.png')]
 
-    enemy_death = [pygame.image.load('assets/Pixel/Sprites/Necromancer/Death/Right/Necromancer Death Right 01.png'),
-                   pygame.image.load('assets/Pixel/Sprites/Necromancer/Death/Right/Necromancer Death Right 02.png'),
-                   pygame.image.load('assets/Pixel/Sprites/Necromancer/Death/Right/Necromancer Death Right 03.png'),
-                   pygame.image.load('assets/Pixel/Sprites/Necromancer/Death/Right/Necromancer Death Right 04.png'),
-                   pygame.image.load('assets/Pixel/Sprites/Necromancer/Death/Right/Necromancer Death Right 05.png'),
-                   pygame.image.load('assets/Pixel/Sprites/Necromancer/Death/Right/Necromancer Death Right 06.png'),
-                   pygame.image.load('assets/Pixel/Sprites/Necromancer/Death/Right/Necromancer Death Right 07.png'),
-                   pygame.image.load('assets/Pixel/Sprites/Necromancer/Death/Right/Necromancer Death Right 08.png'),
-                   pygame.image.load('assets/Pixel/Sprites/Necromancer/Death/Right/Necromancer Death Right 09.png'),
-                   pygame.image.load('assets/Pixel/Sprites/Necromancer/Death/Right/Necromancer Death Right 13.png')]
+    enemy_deathR1 = [pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 00.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 01.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 02.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 03.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 04.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 05.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 06.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 07.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 08.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 09.png')]
+
+    enemy_deathR2 = [pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 10.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 11.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 12.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 13.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 14.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 15.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 16.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 17.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 18.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Right/Templar Deathv1 Right 19.png')]
+
+    enemy_deathL2 = [pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Left/Templar Deathv1 Left 10.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Left/Templar Deathv1 Left 11.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Left/Templar Deathv1 Left 12.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Left/Templar Deathv1 Left 13.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Left/Templar Deathv1 Left 14.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Left/Templar Deathv1 Left 15.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Left/Templar Deathv1 Left 16.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Left/Templar Deathv1 Left 17.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Left/Templar Deathv1 Left 18.png'),
+                     pygame.image.load('assets/Pixel/Sprites/Templar/Deathv1/Left/Templar Deathv1 Left 19.png')]
+
     torch_BG = [pygame.image.load('assets/Pixel/Sprites/BG/Torch/Torch 0.png'),
                 pygame.image.load('assets/Pixel/Sprites/BG/Torch/Torch 1.png'),
                 pygame.image.load('assets/Pixel/Sprites/BG/Torch/Torch 2.png'),
@@ -330,6 +353,7 @@ def Start():
                    pygame.image.load('assets/Pixel/Sprites/BG/Floor/Head/Head 2.png'),
                    pygame.image.load('assets/Pixel/Sprites/BG/Floor/Head/Head 2.png'),
                    pygame.image.load('assets/Pixel/Sprites/BG/Floor/Head/Head 0.png')]
+
     HandSprites = [pygame.image.load('assets/Pixel/Sprites/BG/Floor/Hand/Hand 0.png'),
                    pygame.image.load('assets/Pixel/Sprites/BG/Floor/Hand/Hand 0.png'),
                    pygame.image.load('assets/Pixel/Sprites/BG/Floor/Hand/Hand 0.png'),
@@ -359,11 +383,19 @@ def Start():
     wall5 = pygame.image.load('assets/Pixel/Sprites/BG/Floor/Wall/Wall5.png')
     wall6 = pygame.image.load('assets/Pixel/Sprites/BG/Floor/Wall/Wall6.png')
 
-    # headCthulu = pygame.image.load('assets/Pixel/Sprites/BG/Floor/Head.png')
+    # Fonts
+    # celticRune = pygame.font.Font("assets/Fonts/CelticRune.ttf", 25)
+    # ancientRune = pygame.font.Font("assets/Fonts/AncientRunes.ttf", 25)
+    Pixel = pygame.font.Font("assets/Fonts/Pixel.ttf", 25)
+    Pixel2 = pygame.font.Font("assets/Fonts/Pixel.ttf", 50)
+    Pixel3 = pygame.font.Font("assets/Fonts/Pixel.ttf", 100)
 
     def ThreadSprites():
-        th1 = threading.Thread(target=torchBG.draw)
-        th2 = threading.Thread(target=Cthulu.draw)
+
+        th1 = threading.Thread(target=Cthulu.draw)
+        # th1 = threading.Thread(target=torchBG.draw)
+        th2 = threading.Thread(target=levelNext.levelInDraw)
+
         th1.start()
         th2.start()
 
@@ -467,36 +499,62 @@ def Start():
 
     class levelIn:
         def __init__(self):
-            self.animation = False
-            self.timer = 10
+            self.showNextLevel = False
             self.timerCount = 0
 
-        # def levelInDraw
+        def levelInDraw(self):
+            ry = random.randint(80, 100)
+
+            if self.timerCount + 1 >= 50:
+                self.timerCount = 0
+                self.showNextLevel = False
+
+            if self.showNextLevel:
+                NextLevel = Pixel3.render("Level: " + str(necromancer.levelCounter), True, (107, 238, 77))
+                win.blit(NextLevel, (475, 100 + ry))
+
+            self.timerCount += 1
+
+    class enemyCorpse:
+        def __init__(self):
+            self.enemyDeath = False
+            self.enemyFacingL = False
+            self.enemyFacingR = False
+            self.enemyX = 0
+            self.enemyY = 0
+            self.timerCount = 0
+            self.timerCountRemains = 0
+
+        def enemyCorpseDraw(self):
+            if self.timerCount + 1 >= 30:
+                self.timerCount = 0
+                self.enemyDeath = False
+
+            if self.enemyDeath:
+                if self.enemyFacingR:
+                    win.blit(enemy_deathR2[self.timerCount // 3], (self.enemyX, self.enemyY))
+                elif self.enemyFacingL:
+                    win.blit(enemy_deathL2[self.timerCount // 3], (self.enemyX, self.enemyY))
+
+            self.timerCount += 1
+            self.timerCountRemains += 1
 
     class GameEnd:
-        def __init__(self, x, y):
-            self.x = x
-            self.y = y
+        def __init__(self):
+            self.x = 0
+            self.y = 0
             self.gameOver = False
             self.gameOverCount = 0
             self.date = now
 
         def draw(self):
-
             if self.gameOverCount + 1 >= 30:
                 self.gameOverCount = 0
 
             if self.gameOver:
-                win.blit(enemy_death[self.gameOverCount // 3], (self.x, self.y))
+                win.blit(enemy_deathR1[self.gameOverCount // 3], (self.x, self.y))
 
             self.gameOverCount += 1
-
-    # Fonts
-    # celticRune = pygame.font.Font("assets/Fonts/CelticRune.ttf", 25)
-    # ancientRune = pygame.font.Font("assets/Fonts/AncientRunes.ttf", 25)
-    Pixel = pygame.font.Font("assets/Fonts/Pixel.ttf", 25)
-    Pixel2 = pygame.font.Font("assets/Fonts/Pixel.ttf", 50)
-    Pixel3 = pygame.font.Font("assets/Fonts/Pixel.ttf", 100)
 
     # character attributes
     class player:
@@ -747,7 +805,7 @@ def Start():
             crusader.isDamaged = True
             pointsAdd()
 
-    class enemy(object):
+    class enemy:
         def __init__(self, enemy_x, enemy_y):
             self.enemy_x = enemy_x
             self.enemy_y = enemy_y
@@ -916,6 +974,10 @@ def Start():
                 EnemyHealthDamage = Pixel.render("!!!", True, (255, 50, 77))
                 win.blit(EnemyHealthDamage, (crusader.enemy_x + rx + 10, crusader.enemy_y + ry - 70))
             if crusader.health <= 0:
+                Corpse.enemyX = crusader.enemy_x
+                Corpse.enemyY = crusader.enemy_y
+                Corpse.enemyFacingL = crusader.isFacingLeft
+                Corpse.enemyFacingR = crusader.isFacingRight
                 crusader.isDead = True
 
     def debugKeys():
@@ -950,6 +1012,8 @@ def Start():
         elif crusader.isDead:
             necromancer.levelCounter += 1
             spawnEnemy()
+            levelNext.showNextLevel = True
+            Corpse.enemyDeath = True
 
     def levelIndicator():
         levelIndicatorText = Pixel2.render("Level: " + str(necromancer.levelCounter), True, (252, 252, 252))
@@ -1134,29 +1198,46 @@ def Start():
     def redrawGameWindow():
         win.fill((26, 33, 41))
         ThreadSprites()
+        torchBG.draw()
         floorCorpse()
         floorDraw()
-        nextLevel()
-        # necromancer.draw()
+        Corpse.enemyCorpseDraw()
+
+        # Player Draw (necromancer.draw())
         ThreadPlayer()
+
+        # Music
         musicPause.drawMusic()
+
+        # Statistics
         playerHealth()
         playerStamina()
         playerDamageHealth()
         enemyDamageHealth()
         pointsHandler()
+
+        # Level Indicators
+        nextLevel()
         levelIndicator()
+
+        # Debug Keys
         debugKeys()
         necromancer.godModeToggle()
+
+        # Update Frames
         pygame.display.update()
 
-    # Main Loop
+    # Initialize Classes
     necromancer = player(50, 400)
     crusader = enemy(500, 400)
     torchBG = torch(0, 400)
     Cthulu = cthuluhu(550, 140, 400, 100)
-    gO = GameEnd(700, 200)
+    gO = GameEnd()
     musicPause = mixerWrapper()
+    levelNext = levelIn()
+    Corpse = enemyCorpse()
+
+    # Main Loop
     run = True
     while run:
         # The exit function
@@ -1172,6 +1253,8 @@ def Start():
 
         if necromancer.health <= 0:
             gameOver()
+            gO.x = necromancer.player_x
+            gO.x = necromancer.player_y
             gO.date = datetime.timestamp(now)
 
         if not necromancer.hasName:
